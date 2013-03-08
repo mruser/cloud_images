@@ -1,0 +1,23 @@
+# virtualenv directories
+/bin
+/include
+/lib
+/share
+/local
+/src
+
+# distribute files
+*.egg-info
+/dist
+/build
+
+# python bins
+*.pyo
+*.pyc
+
+# no sphinx buid
+/docs/build
+
+# things we dont want
+*.swp
+*.swo
