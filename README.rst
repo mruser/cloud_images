@@ -56,6 +56,9 @@ API
 `cloud_images.query` includes methods and classes to enable programatic access
 to the Ubuntu Cloud Images index.
 
+* `lookup_ami <http://cloud_images.readthedocs.org/en/latest/ref/cloud_images.html#cloud_images.query.lookup_ami>`_
+* `lookup_image <http://cloud_images.readthedocs.org/en/latest/ref/cloud_images.html#cloud_images.query.lookup_image>`_
+
 TODO
 ----
 
