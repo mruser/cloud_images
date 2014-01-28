@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(
     name='Cloud Images Query',
-    version='0.1.0',
+    version='0.1.1',
     packages=['cloud_images'],
     author='Chris R. Bennett',
     author_email='source@mruser.com',
