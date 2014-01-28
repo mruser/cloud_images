@@ -311,9 +311,8 @@ class UbuntuImageList(object):
     @property
     def images(self):
         if self._images is None:
-            self._images = map(
-                lambda line: self.image_class.instantiate_from_query_line(line),
-                self.response)
+            self._images = [self.image_class.instantiate_from_query_line(line)
+                            for line in self.response]
         return self._images
 
     @property
@@ -323,7 +322,7 @@ class UbuntuImageList(object):
             headers = urllib3.make_headers(accept_encoding=True)
             http = urllib3.PoolManager()
             self._response = http.request('GET', self.url, headers=headers)
-            for line in self._response.data.split('\n'):
+            for line in str(self._response.data, encoding="utf-8").split('\n'):
                 line = line.strip()
                 if line:
                     yield line
@@ -336,6 +335,5 @@ class UbuntuImageList(object):
         if 'arch' in kwargs and kwargs['arch']:
             kwargs['arch'] = CI_ARCH_MAP[kwargs['arch']]
 
-        return UbuntuImageList(images=filter(
-            lambda inst: all([getattr(inst, k) == v for k,v in kwargs.items()]),
-            self.images))
+        return UbuntuImageList(images=[img for img in self.images
+            if all([getattr(img, k) == v for k,v in kwargs.items()])])
